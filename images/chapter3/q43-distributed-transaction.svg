@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">Saga 分布式事务：正向+补偿</text>
+<rect x="80" y="80" width="120" height="50" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="90" y="110" font-size="13" fill="#333">A扣款</text>
+<rect x="250" y="80" width="120" height="50" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="260" y="110" font-size="13" fill="#333">B加款</text>
+<rect x="420" y="80" width="120" height="50" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="430" y="110" font-size="13" fill="#333">通知</text>
+<line x1="200" y1="105" x2="250" y2="105" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="370" y1="105" x2="420" y2="105" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<text x="470" y="170" font-size="12" fill="#D88A8A">通知失败</text>
+<line x1="470" y1="130" x2="470" y2="180" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<rect x="250" y="200" width="120" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="260" y="230" font-size="13" fill="#D88A8A">B退款</text>
+<rect x="80" y="200" width="120" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="90" y="230" font-size="13" fill="#D88A8A">A退款</text>
+<line x1="370" y1="225" x2="250" y2="225" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="200" y1="225" x2="80" y2="225" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<text x="80" y="320" font-size="12" fill="#333">Saga：每个本地事务有对应补偿操作，失败时按相反顺序回滚</text>
+<text x="80" y="350" font-size="12" fill="#333">最终一致性，适合流程长、可补偿的业务</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

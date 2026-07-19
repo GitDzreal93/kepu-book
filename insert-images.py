@@ -31,6 +31,23 @@ image_map = {
     "Q27 ·": "q27-dns-hijacking.png",
     "Q28 ·": "q28-keepalive.png",
     "Q29 ·": "q29-network-partition.png",
+    # 第三章
+    "Q30 ·": "q30-short-url.png",
+    "Q31 ·": "q31-login-system.png",
+    "Q32 ·": "q32-ota-upgrade.png",
+    "Q33 ·": "q33-device-shadow.png",
+    "Q34 ·": "q34-seckill.png",
+    "Q35 ·": "q35-kafka.png",
+    "Q36 ·": "q36-cache.png",
+    "Q37 ·": "q37-redis-single-thread.png",
+    "Q38 ·": "q38-sharding.png",
+    "Q39 ·": "q39-id-generation.png",
+    "Q40 ·": "q40-microservices.png",
+    "Q41 ·": "q41-idempotent-payment.png",
+    "Q42 ·": "q42-config-center.png",
+    "Q43 ·": "q43-distributed-transaction.png",
+    "Q44 ·": "q44-api-gateway.png",
+    "Q45 ·": "q45-hot-update.png",
 }
 
 import os
@@ -38,6 +55,7 @@ base = "/Users/leiwen/WorkBuddy/kepu"
 files = [
     "第1章_系统基石-01.md", "第1章_系统基石-02.md", "第1章_系统基石-03.md", "第1章_系统基石-04.md",
     "第2章_网络协议-01.md", "第2章_网络协议-02.md",
+    "第3章_架构设计-01.md", "第3章_架构设计-02.md", "第3章_架构设计-03.md",
 ]
 for fname in files:
     fpath = os.path.join(base, fname)
@@ -45,7 +63,14 @@ for fname in files:
         lines = f.readlines()
 
     # 确定章节目录
-    chapter_dir = "images/chapter1" if "第1章" in fname else "images/chapter2"
+    if "第1章" in fname:
+        chapter_dir = "images/chapter1"
+    elif "第2章" in fname:
+        chapter_dir = "images/chapter2"
+    elif "第3章" in fname:
+        chapter_dir = "images/chapter3"
+    else:
+        chapter_dir = "images"
 
     # 先移除已有的配图引用行，避免重复插入
     filtered_lines = [line for line in lines if not line.startswith("![配图](images/chapter")]
