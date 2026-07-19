@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">基准测试的三个陷阱</text>
+<rect x="80" y="80" width="640" height="80" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="100" y="105" font-size="13" fill="#4A6FA5" font-weight="bold">陷阱1：JIT预热</text>
+<text x="100" y="125" font-size="11" fill="#333">前几次执行=解释器逐行执行（慢）→ 执行N次后JIT编译为机器码（快）</text>
+<text x="100" y="145" font-size="11" fill="#D88A8A">只跑10次测的是"解释执行"速度，不是真实性能</text>
+<rect x="80" y="180" width="640" height="80" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="100" y="205" font-size="13" fill="#A56F4A" font-weight="bold">陷阱2：GC暂停</text>
+<text x="100" y="225" font-size="11" fill="#333">测试过程中触发GC → Stop-The-World暂停50ms → 测试结果包含GC时间</text>
+<text x="100" y="245" font-size="11" fill="#D88A8A">函数本身0.1ms，但测出50ms——49.9ms是GC暂停</text>
+<rect x="80" y="280" width="640" height="80" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="100" y="305" font-size="13" fill="#D88A8A" font-weight="bold">陷阱3：死代码消除</text>
+<text x="100" y="325" font-size="11" fill="#333">JIT发现计算结果未被使用 → 直接删除整段计算 → 测出0纳秒</text>
+<text x="100" y="345" font-size="11" fill="#D88A8A">你以为测了函数性能，其实什么都没做</text>
+<rect x="80" y="380" width="640" height="60" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="100" y="405" font-size="13" fill="#6B8E23" font-weight="bold">正确做法：用JMH</text>
+<text x="100" y="425" font-size="11" fill="#333">预热轮次（让JIT编译）| 多轮取统计 | Blackhole消费结果 | 控制GC</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

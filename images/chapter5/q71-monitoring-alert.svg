@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">监控告警：防告警风暴</text>
+<rect x="80" y="70" width="120" height="40" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="100" y="95" font-size="11" fill="#4A6FA5">交换机故障</text>
+<rect x="250" y="70" width="100" height="30" rx="4" fill="none" stroke="#D88A8A" stroke-width="1.5" />
+<text x="260" y="90" font-size="10" fill="#D88A8A">告警:Server1</text>
+<rect x="250" y="105" width="100" height="30" rx="4" fill="none" stroke="#D88A8A" stroke-width="1.5" />
+<text x="260" y="125" font-size="10" fill="#D88A8A">告警:Server2</text>
+<rect x="250" y="140" width="100" height="30" rx="4" fill="none" stroke="#D88A8A" stroke-width="1.5" />
+<text x="260" y="160" font-size="10" fill="#D88A8A">告警:Server3</text>
+<rect x="250" y="175" width="100" height="30" rx="4" fill="none" stroke="#D88A8A" stroke-width="1.5" />
+<text x="265" y="195" font-size="10" fill="#D88A8A">...N条告警</text>
+<line x1="200" y1="90" x2="250" y2="85" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="200" y1="90" x2="250" y2="120" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="200" y1="90" x2="250" y2="155" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="200" y1="90" x2="250" y2="190" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<text x="80" y="225" font-size="12" fill="#D88A8A" font-weight="bold">告警风暴：20000条短信淹没真正有价值的告警</text>
+<rect x="80" y="250" width="640" height="100" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="100" y="275" font-size="13" fill="#6B8E23" font-weight="bold">防告警风暴策略</text>
+<text x="100" y="295" font-size="11" fill="#333">1.告警聚合：相同根因合并为一条（1000台不可达→1条）</text>
+<text x="100" y="315" font-size="11" fill="#333">2.告警抑制：交换机down → 抑制所有"服务器不可达"</text>
+<text x="100" y="335" font-size="11" fill="#333">3.延迟告警：等2-3分钟，过滤短暂抖动</text>
+<text x="100" y="355" font-size="11" fill="#333">4.分级告警：P0电话/P1短信/P2即时消息/P3邮件</text>
+<text x="80" y="395" font-size="12" fill="#333">质量指标：信噪比>30% | MTTR | 告警确认率</text>
+<text x="80" y="420" font-size="12" fill="#666">好的告警系统：每个告警都是actionable——你知道该干什么</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

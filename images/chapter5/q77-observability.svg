@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">可观测性三支柱</text>
+<rect x="80" y="80" width="180" height="150" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="115" y="110" font-size="14" fill="#4A6FA5" font-weight="bold">Metrics 指标</text>
+<text x="95" y="140" font-size="11" fill="#333">回答：有没有问题？</text>
+<text x="95" y="165" font-size="11" fill="#333">QPS/P99延迟/CPU</text>
+<text x="95" y="190" font-size="11" fill="#333">聚合数值/低成本</text>
+<text x="95" y="215" font-size="11" fill="#4A6FA5">趋势分析+阈值告警</text>
+<rect x="310" y="80" width="180" height="150" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="340" y="110" font-size="14" fill="#6B8E23" font-weight="bold">Tracing 追踪</text>
+<text x="325" y="140" font-size="11" fill="#333">回答：问题在哪步？</text>
+<text x="325" y="165" font-size="11" fill="#333">TraceID贯穿全链路</text>
+<text x="325" y="190" font-size="11" fill="#333">Span=操作单元</text>
+<text x="325" y="215" font-size="11" fill="#6B8E23">调用树定位瓶颈</text>
+<rect x="540" y="80" width="180" height="150" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="570" y="110" font-size="14" fill="#A56F4A" font-weight="bold">Logging 日志</text>
+<text x="555" y="140" font-size="11" fill="#333">回答：具体什么？</text>
+<text x="555" y="165" font-size="11" fill="#333">离散事件记录</text>
+<text x="555" y="190" font-size="11" fill="#333">结构化JSON</text>
+<text x="555" y="215" font-size="11" fill="#A56F4A">事后排查+审计</text>
+<line x1="260" y1="155" x2="310" y2="155" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="490" y1="155" x2="540" y2="155" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<text x="270" y="145" font-size="10" fill="#666">定位</text>
+<text x="500" y="145" font-size="10" fill="#666">详情</text>
+<rect x="80" y="260" width="640" height="80" rx="4" fill="none" stroke="#333" stroke-width="1.5" />
+<text x="100" y="285" font-size="13" fill="#333" font-weight="bold">三者通过 TraceID 关联</text>
+<text x="100" y="310" font-size="11" fill="#333">Metrics(P99=5s) → Tracing(DB查询占90%) → Logging(慢SQL是SELECT...)</text>
+<text x="100" y="330" font-size="11" fill="#6B8E23">日志没有TraceID=查不了链路 | Metrics没有标签=不能下钻</text>
+<rect x="80" y="360" width="300" height="60" rx="4" fill="none" stroke="#4A6FA5" stroke-width="1.5" />
+<text x="100" y="385" font-size="12" fill="#4A6FA5" font-weight="bold">监控</text>
+<text x="100" y="405" font-size="11" fill="#333">回答"已知的已知"</text>
+<rect x="420" y="360" width="300" height="60" rx="4" fill="none" stroke="#6B8E23" stroke-width="1.5" />
+<text x="440" y="385" font-size="12" fill="#6B8E23" font-weight="bold">可观测性</text>
+<text x="440" y="405" font-size="11" fill="#333">回答"未知的未知"</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

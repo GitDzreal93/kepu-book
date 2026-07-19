@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">CI/CD 流水线全流程</text>
+<rect x="80" y="70" width="100" height="40" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="90" y="95" font-size="11" fill="#4A6FA5">代码 Push</text>
+<rect x="210" y="70" width="100" height="40" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="220" y="95" font-size="11" fill="#4A6FA5">静态分析</text>
+<rect x="340" y="70" width="100" height="40" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="355" y="95" font-size="11" fill="#4A6FA5">编译构建</text>
+<rect x="470" y="70" width="100" height="40" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="485" y="95" font-size="11" fill="#4A6FA5">单元测试</text>
+<rect x="600" y="70" width="100" height="40" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="615" y="95" font-size="11" fill="#4A6FA5">集成测试</text>
+<line x1="180" y1="90" x2="210" y2="90" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="310" y1="90" x2="340" y2="90" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="440" y1="90" x2="470" y2="90" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="570" y1="90" x2="600" y2="90" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<text x="280" y="130" font-size="11" fill="#4A6FA5" font-weight="bold">CI 阶段：持续集成</text>
+<rect x="80" y="160" width="100" height="40" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="90" y="185" font-size="11" fill="#6B8E23">构建镜像</text>
+<rect x="210" y="160" width="100" height="40" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="215" y="185" font-size="11" fill="#6B8E23">部署测试环境</text>
+<rect x="340" y="160" width="100" height="40" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="350" y="185" font-size="11" fill="#6B8E23">E2E测试</text>
+<rect x="470" y="160" width="100" height="40" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="475" y="185" font-size="11" fill="#6B8E23">部署预发布</text>
+<rect x="600" y="160" width="100" height="40" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="610" y="185" font-size="11" fill="#6B8E23">人工审批</text>
+<line x1="180" y1="180" x2="210" y2="180" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="310" y1="180" x2="340" y2="180" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="440" y1="180" x2="470" y2="180" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="570" y1="180" x2="600" y2="180" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<text x="280" y="220" font-size="11" fill="#6B8E23" font-weight="bold">CD 阶段：持续部署</text>
+<rect x="200" y="250" width="100" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="210" y="275" font-size="11" fill="#A56F4A">灰度1%</text>
+<rect x="350" y="250" width="100" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="360" y="275" font-size="11" fill="#A56F4A">灰度5-25%</text>
+<rect x="500" y="250" width="100" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="510" y="275" font-size="11" fill="#A56F4A">全量上线</text>
+<line x1="300" y1="270" x2="350" y2="270" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="450" y1="270" x2="500" y2="270" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<text x="180" y="275" font-size="11" fill="#A56F4A">灰度发布</text>
+<rect x="200" y="320" width="400" height="40" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" stroke-dasharray="5,3" />
+<text x="250" y="345" font-size="12" fill="#D88A8A">任一环节失败 → 自动回滚到上一稳定版本</text>
+<text x="80" y="410" font-size="12" fill="#333">Fail Fast：问题前置发现 | 环境一致：Docker镜像保证</text>
+<text x="80" y="435" font-size="12" fill="#666">Pipeline as Code：流水线配置随代码版本管理</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

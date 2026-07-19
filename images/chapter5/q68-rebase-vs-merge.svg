@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">Merge vs Rebase 提交历史</text>
+<text x="80" y="75" font-size="13" fill="#6B8E23" font-weight="bold">Merge（保留真相）：</text>
+<circle cx="100" cy="110" r="12" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="95" y="115" font-size="10" fill="#4A6FA5">A</text>
+<circle cx="180" cy="110" r="12" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="175" y="115" font-size="10" fill="#4A6FA5">B</text>
+<circle cx="260" cy="110" r="12" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="255" y="115" font-size="10" fill="#4A6FA5">C</text>
+<circle cx="180" cy="180" r="12" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="175" y="185" font-size="10" fill="#A56F4A">D</text>
+<circle cx="260" cy="180" r="12" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="255" y="185" font-size="10" fill="#A56F4A">E</text>
+<circle cx="340" cy="145" r="14" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="333" y="150" font-size="10" fill="#6B8E23">M</text>
+<line x1="112" y1="110" x2="168" y2="110" stroke="#4A6FA5" stroke-width="1.5" marker-end="url(#arrow)" />
+<line x1="192" y1="110" x2="248" y2="110" stroke="#4A6FA5" stroke-width="1.5" marker-end="url(#arrow)" />
+<line x1="190" y1="122" x2="268" y2="168" stroke="#A56F4A" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)" />
+<line x1="272" y1="180" x2="338" y2="155" stroke="#6B8E23" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="272" y1="110" x2="326" y2="140" stroke="#6B8E23" stroke-width="1" marker-end="url(#arrow)" />
+<text x="360" y="145" font-size="11" fill="#333">Merge Commit</text>
+<text x="360" y="160" font-size="11" fill="#666">保留并行开发真相</text>
+<text x="80" y="240" font-size="13" fill="#A56F4A" font-weight="bold">Rebase（重写为直线）：</text>
+<circle cx="100" cy="275" r="12" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="95" y="280" font-size="10" fill="#4A6FA5">A</text>
+<circle cx="180" cy="275" r="12" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="175" y="280" font-size="10" fill="#4A6FA5">B</text>
+<circle cx="260" cy="275" r="12" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="255" y="280" font-size="10" fill="#4A6FA5">C</text>
+<circle cx="340" cy="275" r="12" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="333" y="280" font-size="10" fill="#A56F4A">D'</text>
+<circle cx="420" cy="275" r="12" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="413" y="280" font-size="10" fill="#A56F4A">E'</text>
+<line x1="112" y1="275" x2="168" y2="275" stroke="#4A6FA5" stroke-width="1.5" marker-end="url(#arrow)" />
+<line x1="192" y1="275" x2="248" y2="275" stroke="#4A6FA5" stroke-width="1.5" marker-end="url(#arrow)" />
+<line x1="272" y1="275" x2="328" y2="275" stroke="#A56F4A" stroke-width="1.5" marker-end="url(#arrow)" />
+<line x1="352" y1="275" x2="408" y2="275" stroke="#A56F4A" stroke-width="1.5" marker-end="url(#arrow)" />
+<text x="440" y="275" font-size="11" fill="#333">D'和E'是新commit</text>
+<text x="440" y="290" font-size="11" fill="#A56F4A">SHA变了，历史被改写</text>
+<text x="80" y="370" font-size="13" fill="#D88A8A" font-weight="bold">铁律：不rebase已push的公共分支</text>
+<text x="80" y="395" font-size="12" fill="#333">个人feature分支 → rebase保持整洁</text>
+<text x="80" y="415" font-size="12" fill="#333">公共main分支 → merge保留真相</text>
+<text x="80" y="440" font-size="12" fill="#666">SHA：Secure Hash Algorithm，Git用40位哈希唯一标识每个提交</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>
