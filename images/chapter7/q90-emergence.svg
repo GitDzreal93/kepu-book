@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">涌现能力：模型规模的相变</text>
+<line x1="80" y1="430" x2="720" y2="430" stroke="#666" stroke-width="2" />
+<line x1="80" y1="80" x2="80" y2="430" stroke="#666" stroke-width="2" />
+<text x="60" y="90" font-size="11" fill="#666" transform="rotate(-90 60 90)">准确率</text>
+<text x="730" y="440" font-size="11" fill="#666">模型规模 -></text>
+<path d="M 80 420 L 150 420 L 220 418 L 290 415 L 340 412 L 370 405 L 390 300 L 410 200 L 440 160 L 480 140 L 540 130 L 620 125 L 700 122" fill="none" stroke="#4A6FA5" stroke-width="2.5" />
+<text x="100" y="410" font-size="10" fill="#666">1M参数</text>
+<text x="250" y="410" font-size="10" fill="#666">1B</text>
+<text x="350" y="410" font-size="10" fill="#666">10B</text>
+<text x="460" y="410" font-size="10" fill="#666">100B</text>
+<text x="600" y="410" font-size="10" fill="#666">1T</text>
+<line x1="390" y1="80" x2="390" y2="430" stroke="#D88A8A" stroke-width="1.5" stroke-dasharray="5,4" />
+<text x="340" y="100" font-size="12" fill="#D88A8A" font-weight="bold">涌现阈值</text>
+<text x="340" y="120" font-size="11" fill="#D88A8A">能力突然出现</text>
+<text x="100" y="200" font-size="11" fill="#888">约等于随机猜</text>
+<text x="100" y="220" font-size="11" fill="#888">0% 能力</text>
+<text x="430" y="200" font-size="11" fill="#6B8E23">能力急剧上升</text>
+<text x="430" y="220" font-size="11" fill="#6B8E23">60%+ 突跳</text>
+<rect x="100" y="280" width="290" height="60" rx="4" fill="none" stroke="#4A6FA5" stroke-width="1.5" />
+<text x="115" y="300" font-size="11" fill="#4A6FA5">缩放定律: Loss 随参数</text>
+<text x="115" y="315" font-size="11" fill="#4A6FA5">按幂律下降 (可预测)</text>
+<text x="115" y="330" font-size="11" fill="#4A6FA5">但 Loss != 能力出现</text>
+<rect x="430" y="280" width="290" height="60" rx="4" fill="none" stroke="#D88A8A" stroke-width="1.5" />
+<text x="445" y="300" font-size="11" fill="#D88A8A">涌现不可预测</text>
+<text x="445" y="315" font-size="11" fill="#D88A8A">开发者不知道某规模</text>
+<text x="445" y="330" font-size="11" fill="#D88A8A">会出现什么新能力</text>
+<text x="100" y="460" font-size="12" fill="#D88A8A">暗面: 欺骗/漏洞利用/社会工程 也可能涌现</text>
+</svg>

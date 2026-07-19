@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">过拟合：训练集满分, 测试集不及格</text>
+<rect x="80" y="80" width="340" height="180" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="100" y="105" font-size="14" fill="#4A6FA5" font-weight="bold">欠拟合 (High Bias)</text>
+<text x="100" y="130" font-size="12" fill="#333">模型太简单 -> 学不到规律</text>
+<text x="100" y="150" font-size="12" fill="#333">训练损失: 高</text>
+<text x="100" y="170" font-size="12" fill="#333">验证损失: 高</text>
+<circle cx="130" cy="220" r="4" fill="#4A6FA5" />
+<circle cx="160" cy="230" r="4" fill="#4A6FA5" />
+<circle cx="190" cy="215" r="4" fill="#4A6FA5" />
+<circle cx="220" cy="240" r="4" fill="#4A6FA5" />
+<circle cx="250" cy="220" r="4" fill="#4A6FA5" />
+<circle cx="280" cy="235" r="4" fill="#4A6FA5" />
+<line x1="110" y1="225" x2="330" y2="225" stroke="#4A6FA5" stroke-width="2" stroke-dasharray="5,4" />
+<text x="280" y="250" font-size="10" fill="#4A6FA5">一条直线拟合曲线数据</text>
+<rect x="450" y="80" width="290" height="180" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="470" y="105" font-size="14" fill="#D88A8A" font-weight="bold">过拟合 (High Variance)</text>
+<text x="470" y="130" font-size="12" fill="#333">模型太复杂 -> 记住噪声</text>
+<text x="470" y="150" font-size="12" fill="#333">训练损失: 极低</text>
+<text x="470" y="170" font-size="12" fill="#333">验证损失: 先降后升</text>
+<circle cx="480" cy="225" r="4" fill="#D88A8A" />
+<circle cx="510" cy="210" r="4" fill="#D88A8A" />
+<circle cx="540" cy="235" r="4" fill="#D88A8A" />
+<circle cx="570" cy="200" r="4" fill="#D88A8A" />
+<circle cx="600" cy="240" r="4" fill="#D88A8A" />
+<circle cx="630" cy="205" r="4" fill="#D88A8A" />
+<path d="M 470 230 Q 485 200, 500 225 Q 515 195, 530 230 Q 545 195, 560 200 Q 575 235, 590 205 Q 605 235, 620 205 Q 635 240, 650 210" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="470" y="250" font-size="10" fill="#D88A8A">曲线经过每个点 = 背题</text>
+<rect x="80" y="290" width="660" height="80" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="100" y="315" font-size="14" fill="#6B8E23" font-weight="bold">对抗过拟合的方法</text>
+<text x="100" y="340" font-size="11" fill="#333">正则化(L1/L2) | Dropout | Early Stop | 数据增强 | 更多数据</text>
+<text x="100" y="360" font-size="11" fill="#666">本质: 不要用超出问题复杂度的工具解决简单问题</text>
+<text x="80" y="410" font-size="12" fill="#4A6FA5" font-weight="bold">偏差-方差权衡</text>
+<text x="80" y="435" font-size="11" fill="#4A6FA5">简单模型 -> 高偏差低方差</text>
+<text x="300" y="435" font-size="11" fill="#D88A8A">复杂模型 -> 低偏差高方差</text>
+<text x="550" y="435" font-size="11" fill="#6B8E23">最优 -> 两者平衡</text>
+</svg>

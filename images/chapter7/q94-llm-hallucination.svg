@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">大模型幻觉：概率模型没有"我不知道"</text>
+<rect x="80" y="80" width="340" height="150" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="100" y="105" font-size="14" fill="#4A6FA5" font-weight="bold">LLM 数学本质</text>
+<text x="100" y="130" font-size="13" fill="#333">P(next_token | context)</text>
+<text x="100" y="155" font-size="11" fill="#666">预测下一个Token的概率</text>
+<text x="100" y="175" font-size="11" fill="#666">不是"什么是真的" 是"什么最可能出现"</text>
+<text x="100" y="200" font-size="11" fill="#D88A8A">学的是Token共现统计, 不是事实</text>
+<rect x="440" y="80" width="290" height="150" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="460" y="105" font-size="14" fill="#A56F4A" font-weight="bold">幻觉三种类型</text>
+<text x="460" y="130" font-size="11" fill="#333">1. 事实性: 编造不存在的事实</text>
+<text x="460" y="150" font-size="11" fill="#333">2. 一致性: 同问题矛盾答案</text>
+<text x="460" y="170" font-size="11" fill="#333">3. 忠实性: 总结加入原文没有的信息</text>
+<text x="460" y="200" font-size="11" fill="#D88A8A">不能根除 = 范式局限</text>
+<rect x="80" y="250" width="650" height="100" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="100" y="275" font-size="14" fill="#6B8E23" font-weight="bold">对抗幻觉的方法 (缓解, 非根除)</text>
+<text x="100" y="300" font-size="11" fill="#6B8E23">RAG: 生成前检索外部知识库 -> 基于文档生成</text>
+<text x="100" y="320" font-size="11" fill="#A56F4A">RLHF: 教模型"不确定时说我不确定"</text>
+<text x="100" y="340" font-size="11" fill="#4A6FA5">事实核查 + Chain-of-Thought + 降低Temperature</text>
+<text x="80" y="375" font-size="12" fill="#D88A8A" font-weight="bold">为什么不能根除?</text>
+<text x="80" y="395" font-size="11" fill="#D88A8A">- 概率模型没有"元认知"(不知道自己不知道)</text>
+<text x="80" y="415" font-size="11" fill="#D88A8A">- 训练数据混合事实和虚构</text>
+<text x="80" y="435" font-size="11" fill="#D88A8A">- 知识的参数化压缩必然有损</text>
+<text x="400" y="375" font-size="12" fill="#6B8E23" font-weight="bold">工程师的防御策略</text>
+<text x="400" y="395" font-size="11" fill="#6B8E23">- 不当知识库, 当概率推理引擎</text>
+<text x="400" y="415" font-size="11" fill="#6B8E23">- 关键场景加校验层</text>
+<text x="400" y="435" font-size="11" fill="#6B8E23">- 信任但验证(像对待聪明实习生)</text>
+</svg>

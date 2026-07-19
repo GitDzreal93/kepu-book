@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">梯度下降：用局部信息逼近最优解</text>
+<path d="M 80 180 Q 200 100, 350 220 Q 500 340, 700 200" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="100" y="140" font-size="11" fill="#4A6FA5">损失函数</text>
+<circle cx="100" cy="180" r="6" fill="#D88A8A" />
+<text x="110" y="200" font-size="11" fill="#D88A8A">起步(随机参数)</text>
+<line x1="106" y1="178" x2="140" y2="155" stroke="#D88A8A" stroke-width="1.5" stroke-dasharray="4,3" />
+<circle cx="145" cy="150" r="5" fill="#A56F4A" />
+<text x="155" y="145" font-size="10" fill="#A56F4A">步1</text>
+<line x1="150" y1="150" x2="190" y2="135" stroke="#A56F4A" stroke-width="1.5" stroke-dasharray="4,3" />
+<circle cx="195" cy="130" r="5" fill="#A56F4A" />
+<text x="205" y="125" font-size="10" fill="#A56F4A">步2</text>
+<line x1="200" y1="130" x2="250" y2="145" stroke="#A56F4A" stroke-width="1.5" stroke-dasharray="4,3" />
+<circle cx="255" cy="150" r="5" fill="#A56F4A" />
+<text x="265" y="165" font-size="10" fill="#A56F4A">步3</text>
+<circle cx="340" cy="220" r="8" fill="#6B8E23" />
+<text x="280" y="250" font-size="12" fill="#6B8E23" font-weight="bold">谷底(最优解)</text>
+<rect x="440" y="80" width="290" height="130" rx="4" fill="none" stroke="#4A6FA5" stroke-width="1.5" />
+<text x="455" y="105" font-size="13" fill="#4A6FA5" font-weight="bold">训练循环</text>
+<text x="455" y="125" font-size="11" fill="#333">1. 取一批数据 (Batch)</text>
+<text x="455" y="145" font-size="11" fill="#333">2. 前向传播 -> 预测值</text>
+<text x="455" y="165" font-size="11" fill="#333">3. 计算损失 (Loss)</text>
+<text x="455" y="185" font-size="11" fill="#333">4. 反向传播 -> 梯度</text>
+<text x="455" y="205" font-size="11" fill="#333">5. 参数 = 参数 - LR * 梯度</text>
+<rect x="440" y="230" width="290" height="80" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="455" y="255" font-size="13" fill="#A56F4A" font-weight="bold">学习率 (LR)</text>
+<text x="455" y="275" font-size="11" fill="#D88A8A">太大 -> 震荡/发散</text>
+<text x="455" y="295" font-size="11" fill="#D88A8A">太小 -> 极慢</text>
+<text x="80" y="310" font-size="12" fill="#666" font-weight="bold">优化器进化:</text>
+<text x="80" y="335" font-size="11" fill="#4A6FA5">SGD: 沿梯度走</text>
+<text x="80" y="355" font-size="11" fill="#A56F4A">Momentum: +惯性(滑过小坑)</text>
+<text x="80" y="375" font-size="11" fill="#6B8E23">Adam: +自适应学习率(每参数独立)</text>
+<text x="80" y="395" font-size="11" fill="#D88A8A">+LR Schedule: 余弦退火</text>
+<text x="80" y="440" font-size="12" fill="#D88A8A">本质: 在不知道全貌时, 用局部信息逐步逼近</text>
+</svg>
