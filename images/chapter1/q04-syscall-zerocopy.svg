@@ -1,0 +1,61 @@
+<svg viewBox="0 0 680 440" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Q4 syscall与零拷贝</title>
+  <desc>一次read系统调用：用户态→内核态→page cache未命中→DMA搬运磁盘→copy_to_user→返回。零拷贝(sendfile)绕过用户态拷贝环节</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#E24B4A" stroke-width="1" stroke-linecap="round"/></marker>
+  </defs>
+  <rect x="0" y="0" width="680" height="440" rx="4" fill="#F9F7F0"/>
+  <g stroke="#E5E0D5" stroke-width="0.3"><line x1="0" y1="20" x2="680" y2="20"/><line x1="0" y1="44" x2="680" y2="44"/><line x1="0" y1="68" x2="680" y2="68"/><line x1="0" y1="92" x2="680" y2="92"/><line x1="0" y1="116" x2="680" y2="116"/><line x1="0" y1="140" x2="680" y2="140"/><line x1="0" y1="164" x2="680" y2="164"/><line x1="0" y1="188" x2="680" y2="188"/><line x1="0" y1="212" x2="680" y2="212"/><line x1="0" y1="236" x2="680" y2="236"/><line x1="0" y1="260" x2="680" y2="260"/><line x1="0" y1="284" x2="680" y2="284"/><line x1="0" y1="308" x2="680" y2="308"/><line x1="0" y1="332" x2="680" y2="332"/><line x1="0" y1="356" x2="680" y2="356"/><line x1="0" y1="380" x2="680" y2="380"/><line x1="0" y1="404" x2="680" y2="404"/><line x1="0" y1="428" x2="680" y2="428"/></g>
+  <line x1="44" y1="24" x2="44" y2="440" stroke="#FF8B8B" stroke-width="0.8" stroke-dasharray="2,4"/>
+  <text x="315" y="30" font-family="serif" font-size="14" fill="#2C2C2A" text-anchor="middle" font-style="italic">Q4 系统调用与零拷贝</text>
+
+  <line x1="24" y1="56" x2="24" y2="410" stroke="#888780" stroke-width="1"/>
+  <text x="14" y="240" font-family="serif" font-size="10" fill="#888780" text-anchor="middle" transform="rotate(-90,14,240)">传统 read()</text>
+
+  <rect x="44" y="60" width="120" height="40" rx="4" fill="none" stroke="#534AB7" stroke-width="0.8" stroke-dasharray="4,2"/>
+  <text x="104" y="84" font-family="serif" font-size="13" fill="#534AB7" text-anchor="middle" font-weight="500">用户态</text>
+  <polyline points="164,80 200,80" fill="none" stroke="#5F5E5A" stroke-width="0.8" marker-end="url(#a)"/>
+  <text x="182" y="72" font-family="serif" font-size="9" fill="#888780" text-anchor="middle">syscall</text>
+
+  <rect x="210" y="60" width="120" height="40" rx="4" fill="none" stroke="#D85A30" stroke-width="0.8" stroke-dasharray="4,2"/>
+  <text x="270" y="84" font-family="serif" font-size="13" fill="#D85A30" text-anchor="middle" font-weight="500">内核态</text>
+  <polyline points="270,100 270,140" fill="none" stroke="#5F5E5A" stroke-width="0.8" marker-end="url(#a)"/>
+  <text x="280" y="124" font-family="serif" font-size="9" fill="#888780">fd→inode→VFS</text>
+
+  <rect x="200" y="148" width="140" height="40" rx="4" fill="none" stroke="#1D9E75" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <text x="270" y="172" font-family="serif" font-size="13" fill="#1D9E75" text-anchor="middle" font-weight="500">Page Cache?</text>
+  <polyline points="270,188 270,220" fill="none" stroke="#E24B4A" stroke-width="0.8" marker-end="url(#r)"/>
+  <text x="282" y="208" font-family="serif" font-size="9" fill="#E24B4A">miss</text>
+
+  <rect x="200" y="228" width="140" height="40" rx="4" fill="none" stroke="#D85A30" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <text x="270" y="252" font-family="serif" font-size="13" fill="#D85A30" text-anchor="middle" font-weight="500">磁盘IO (DMA搬运)</text>
+  <polyline points="270,268 270,300" fill="none" stroke="#5F5E5A" stroke-width="0.8" marker-end="url(#a)"/>
+
+  <rect x="200" y="306" width="140" height="40" rx="4" fill="none" stroke="#A32D2D" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <text x="270" y="330" font-family="serif" font-size="12" fill="#A32D2D" text-anchor="middle" font-weight="500">copy_to_user()</text>
+  <polyline points="340,326 370,326 370,80 300,80" fill="none" stroke="#A32D2D" stroke-width="0.6" stroke-dasharray="2,3"/>
+  <text x="360" y="200" font-family="serif" font-size="9" fill="#A32D2D">最贵的拷贝</text>
+
+  <line x1="390" y1="56" x2="390" y2="410" stroke="#888780" stroke-width="1"/>
+  <text x="380" y="240" font-family="serif" font-size="10" fill="#3B6D11" text-anchor="middle" transform="rotate(-90,380,240)">零拷贝 sendfile</text>
+
+  <rect x="410" y="60" width="100" height="40" rx="4" fill="none" stroke="#534AB7" stroke-width="0.8" stroke-dasharray="4,2"/>
+  <text x="460" y="84" font-family="serif" font-size="13" fill="#534AB7" text-anchor="middle" font-weight="500">用户态</text>
+  <polyline points="460,100 460,140" fill="none" stroke="#5F5E5A" stroke-width="0.8" marker-end="url(#a)"/>
+  <text x="470" y="124" font-family="serif" font-size="9" fill="#3B6D11">sendfile()</text>
+
+  <rect x="410" y="148" width="100" height="100" rx="4" fill="none" stroke="#3B6D11" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <text x="460" y="172" font-family="serif" font-size="13" fill="#3B6D11" text-anchor="middle" font-weight="500">内核态</text>
+  <text x="460" y="196" font-family="monospace" font-size="9" fill="#5F5E5A" text-anchor="middle">PageCache</text>
+  <polyline points="460,210 460,220 560,220 560,260" fill="none" stroke="#3B6D11" stroke-width="0.8" marker-end="url(#a)"/>
+  <text x="470" y="216" font-family="serif" font-size="9" fill="#3B6D11">DMA directly→</text>
+
+  <rect x="540" y="148" width="100" height="40" rx="4" fill="none" stroke="#3B6D11" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <text x="590" y="172" font-family="serif" font-size="13" fill="#3B6D11" text-anchor="middle" font-weight="500">网卡</text>
+
+  <text x="460" y="300" font-family="serif" font-size="10" fill="#3B6D11" text-anchor="middle">磁盘→内核→网卡</text>
+  <text x="460" y="320" font-family="serif" font-size="10" fill="#3B6D11" text-anchor="middle">跳过了 copy_to_user</text>
+
+  <text x="44" y="424" font-family="serif" font-size="9" fill="#B4B2A9" font-style="italic">系统调用的代价不是它做了什么，是"出入境"的安检开销。零拷贝的优化——减少出入境次数和每次入境的检测工作量。</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg viewBox="0 0 680 420" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Q3 进程、线程、协程对比</title>
+  <desc>进程(独立地址空间+IPC) vs 线程(共享地址空间+锁) vs 协程(用户态调度+轻量栈)，调度成本依次降低</desc>
+  <rect x="0" y="0" width="680" height="420" rx="4" fill="#F9F7F0"/>
+  <g stroke="#E5E0D5" stroke-width="0.3"><line x1="0" y1="20" x2="680" y2="20"/><line x1="0" y1="44" x2="680" y2="44"/><line x1="0" y1="68" x2="680" y2="68"/><line x1="0" y1="92" x2="680" y2="92"/><line x1="0" y1="116" x2="680" y2="116"/><line x1="0" y1="140" x2="680" y2="140"/><line x1="0" y1="164" x2="680" y2="164"/><line x1="0" y1="188" x2="680" y2="188"/><line x1="0" y1="212" x2="680" y2="212"/><line x1="0" y1="236" x2="680" y2="236"/><line x1="0" y1="260" x2="680" y2="260"/><line x1="0" y1="284" x2="680" y2="284"/><line x1="0" y1="308" x2="680" y2="308"/><line x1="0" y1="332" x2="680" y2="332"/><line x1="0" y1="356" x2="680" y2="356"/><line x1="0" y1="380" x2="680" y2="380"/><line x1="0" y1="404" x2="680" y2="404"/></g>
+  <line x1="44" y1="24" x2="44" y2="420" stroke="#FF8B8B" stroke-width="0.8" stroke-dasharray="2,4"/>
+  <text x="315" y="30" font-family="serif" font-size="14" fill="#2C2C2A" text-anchor="middle" font-style="italic">Q3 进程 · 线程 · 协程 — 谁调度、什么开销</text>
+
+  <rect x="24" y="52" width="188" height="300" rx="6" fill="none" stroke="#D85A30" stroke-width="0.6" stroke-dasharray="6,3"/>
+  <text x="118" y="80" font-family="serif" font-size="14" fill="#D85A30" text-anchor="middle" font-weight="500">进程</text>
+  <text x="118" y="110" font-family="monospace" font-size="10" fill="#5F5E5A" text-anchor="middle">独立虚拟地址空间</text>
+  <text x="118" y="130" font-family="monospace" font-size="10" fill="#5F5E5A" text-anchor="middle">页表隔离 · PID</text>
+  <line x1="44" y1="148" x2="192" y2="148" stroke="#E5E0D5" stroke-width="0.3"/>
+  <text x="118" y="172" font-family="serif" font-size="12" fill="#D85A30" text-anchor="middle">调度方：OS内核 (PCB)</text>
+  <text x="118" y="196" font-family="serif" font-size="12" fill="#D85A30" text-anchor="middle">通信：管道/共享内存</text>
+  <text x="118" y="220" font-family="serif" font-size="12" fill="#D85A30" text-anchor="middle">切换：TLB全清+页表切换</text>
+  <text x="118" y="252" font-family="serif" font-size="12" fill="#D85A30" text-anchor="middle">开销：~1-10µs</text>
+  <text x="118" y="296" font-family="serif" font-size="11" fill="#888780" text-anchor="middle">Java进程 = 1个JVM进程</text>
+  <text x="118" y="320" font-family="serif" font-size="11" fill="#888780" text-anchor="middle">Go每个程序 = 1个进程</text>
+
+  <rect x="246" y="52" width="188" height="300" rx="6" fill="none" stroke="#185FA5" stroke-width="0.6" stroke-dasharray="6,3"/>
+  <text x="340" y="80" font-family="serif" font-size="14" fill="#185FA5" text-anchor="middle" font-weight="500">线程</text>
+  <text x="340" y="110" font-family="monospace" font-size="10" fill="#5F5E5A" text-anchor="middle">共享虚拟地址空间</text>
+  <text x="340" y="130" font-family="monospace" font-size="10" fill="#5F5E5A" text-anchor="middle">栈独立 · 8MB内核栈</text>
+  <line x1="266" y1="148" x2="414" y2="148" stroke="#E5E0D5" stroke-width="0.3"/>
+  <text x="340" y="172" font-family="serif" font-size="12" fill="#185FA5" text-anchor="middle">调度方：OS内核 (TCB)</text>
+  <text x="340" y="196" font-family="serif" font-size="12" fill="#185FA5" text-anchor="middle">通信：共享内存+锁</text>
+  <text x="340" y="220" font-family="serif" font-size="12" fill="#185FA5" text-anchor="middle">切换：保存/恢复寄存器</text>
+  <text x="340" y="252" font-family="serif" font-size="12" fill="#185FA5" text-anchor="middle">开销：~100-500ns</text>
+  <text x="340" y="296" font-family="serif" font-size="11" fill="#888780" text-anchor="middle">Java: OS原生线程 1:1</text>
+  <text x="340" y="320" font-family="serif" font-size="11" fill="#888780" text-anchor="middle">Python: GIL限制并行</text>
+
+  <rect x="468" y="52" width="188" height="300" rx="6" fill="none" stroke="#3B6D11" stroke-width="0.6" stroke-dasharray="6,3"/>
+  <text x="562" y="80" font-family="serif" font-size="14" fill="#3B6D11" text-anchor="middle" font-weight="500">协程</text>
+  <text x="562" y="110" font-family="monospace" font-size="10" fill="#5F5E5A" text-anchor="middle">共享进程内存</text>
+  <text x="562" y="130" font-family="monospace" font-size="10" fill="#5F5E5A" text-anchor="middle">栈极小 · 2KB起</text>
+  <line x1="488" y1="148" x2="636" y2="148" stroke="#E5E0D5" stroke-width="0.3"/>
+  <text x="562" y="172" font-family="serif" font-size="12" fill="#3B6D11" text-anchor="middle">调度方：用户态运行时</text>
+  <text x="562" y="196" font-family="serif" font-size="12" fill="#3B6D11" text-anchor="middle">通信：channel/await</text>
+  <text x="562" y="220" font-family="serif" font-size="12" fill="#3B6D11" text-anchor="middle">切换：仅换栈/寄存器</text>
+  <text x="562" y="252" font-family="serif" font-size="12" fill="#3B6D11" text-anchor="middle">开销：~10-50ns</text>
+  <text x="562" y="296" font-family="serif" font-size="11" fill="#888780" text-anchor="middle">Go: GMP调度+抢占</text>
+  <text x="562" y="320" font-family="serif" font-size="11" fill="#888780" text-anchor="middle">Python: async/await合作式</text>
+
+  <text x="44" y="400" font-family="serif" font-size="9" fill="#B4B2A9" font-style="italic">协程不是比线程快，是用更少的资源做更多的事。CPU闲置时间被协程填满——让机器少发呆。</text>
+</svg>
