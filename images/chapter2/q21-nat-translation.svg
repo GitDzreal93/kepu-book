@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">NAT：多设备共享一个公网IP</text>
+<rect x="80" y="80" width="120" height="40" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="90" y="105" font-size="12" fill="#333">192.168.1.105</text>
+<rect x="80" y="140" width="120" height="40" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="90" y="165" font-size="12" fill="#333">192.168.1.106</text>
+<rect x="80" y="200" width="120" height="40" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="90" y="225" font-size="12" fill="#333">192.168.1.107</text>
+<rect x="320" y="130" width="160" height="80" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="340" y="175" font-size="14" fill="#A56F4A" font-weight="bold">NAT 路由器</text>
+<rect x="580" y="130" width="140" height="80" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="595" y="175" font-size="14" fill="#6B8E23" font-weight="bold">互联网</text>
+<line x1="200" y1="100" x2="320" y2="150" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="200" y1="160" x2="320" y2="170" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="200" y1="220" x2="320" y2="190" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="480" y1="170" x2="580" y2="170" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<text x="330" y="260" font-size="12" fill="#333">映射表：203.0.113.5:12345 ↔ 192.168.1.105:54321</text>
+<text x="330" y="285" font-size="12" fill="#333">203.0.113.5:12346 ↔ 192.168.1.106:54322</text>
+<text x="80" y="320" font-size="12" fill="#333">内网用私有IP，出口统一换成公网IP + 不同端口号</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

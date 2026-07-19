@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">QUIC vs TCP</text>
+<rect x="80" y="80" width="300" height="140" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="100" y="110" font-size="16" fill="#4A6FA5" font-weight="bold">TCP + TLS 1.2</text>
+<line x1="100" y1="130" x2="360" y2="130" stroke="#666" stroke-width="1" />
+<line x1="100" y1="130" x2="160" y2="130" stroke="#666" stroke-width="4" />
+<line x1="160" y1="130" x2="220" y2="130" stroke="#666" stroke-width="4" />
+<line x1="220" y1="130" x2="360" y2="130" stroke="#666" stroke-width="4" />
+<text x="100" y="160" font-size="12" fill="#333">TCP握手 1-RTT + TLS握手 2-RTT = 3-RTT</text>
+<text x="100" y="180" font-size="12" fill="#333">一个流丢包，全连接阻塞</text>
+<text x="100" y="200" font-size="12" fill="#333">IP变了连接就断</text>
+<rect x="420" y="80" width="300" height="140" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="440" y="110" font-size="16" fill="#6B8E23" font-weight="bold">QUIC / HTTP3</text>
+<line x1="440" y1="130" x2="700" y2="130" stroke="#666" stroke-width="1" />
+<line x1="440" y1="130" x2="700" y2="130" stroke="#6B8E23" stroke-width="8" />
+<text x="440" y="160" font-size="12" fill="#333">1-RTT（甚至 0-RTT）握手</text>
+<text x="440" y="180" font-size="12" fill="#333">多流独立，单流阻塞不影响他流</text>
+<text x="440" y="200" font-size="12" fill="#333">连接ID不变，IP变了也能继续</text>
+<rect x="80" y="300" width="640" height="40" rx="4" fill="none" stroke="#666" stroke-width="1.5" />
+<text x="95" y="325" font-size="12" fill="#333">QUIC 在 UDP 之上重新实现可靠传输，绕过 TCP 中间件僵化问题</text>
+</svg>

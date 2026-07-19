@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">TCP 拥塞控制窗口变化</text>
+<line x1="80" y1="420" x2="720" y2="420" stroke="#333" stroke-width="1.5" />
+<line x1="80" y1="420" x2="80" y2="80" stroke="#333" stroke-width="1.5" />
+<text x="730" y="425" font-size="12" fill="#333">RTT</text>
+<text x="60" y="80" font-size="12" fill="#333">cwnd</text>
+<path d="M80,400 L120,380 L160,340 L200,260 L240,220 L280,200 L320,190 L360,185 L400,185 L440,185 L480,185 L520,185 L560,185 L600,185" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="130" y="310" font-size="12" fill="#4A6FA5">慢启动</text>
+<text x="320" y="170" font-size="12" fill="#A56F4A">拥塞避免</text>
+<path d="M640,185 L680,140 L720,180" fill="none" stroke="#D88A8A" stroke-width="2" stroke-dasharray="3,3" />
+<text x="650" y="130" font-size="12" fill="#D88A8A">丢包/超时</text>
+<line x1="600" y1="185" x2="720" y2="185" stroke="#666" stroke-width="1" stroke-dasharray="3,3" />
+<text x="620" y="205" font-size="11" fill="#333">ssthresh</text>
+<rect x="80" y="450" width="640" height="40" rx="4" fill="none" stroke="#666" stroke-width="1.5" />
+<text x="95" y="475" font-size="12" fill="#333">慢启动指数增长 → 拥塞避免线性增长 → 丢包后半窗恢复</text>
+</svg>
