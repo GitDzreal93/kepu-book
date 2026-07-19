@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">Kafka：分区并行 + 副本可靠</text>
+<rect x="80" y="80" width="100" height="50" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="90" y="110" font-size="13" fill="#4A6FA5">Producer</text>
+<rect x="250" y="70" width="130" height="220" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="270" y="100" font-size="13" fill="#A56F4A" font-weight="bold">Topic</text>
+<rect x="265" y="115" width="100" height="45" fill="none" stroke="#A56F4A" stroke-width="1" />
+<text x="280" y="135" font-size="11" fill="#333">P0</text>
+<text x="280" y="150" font-size="10" fill="#666">msg1,msg4,msg7</text>
+<rect x="265" y="170" width="100" height="45" fill="none" stroke="#A56F4A" stroke-width="1" />
+<text x="280" y="190" font-size="11" fill="#333">P1</text>
+<text x="280" y="205" font-size="10" fill="#666">msg2,msg5,msg8</text>
+<rect x="265" y="225" width="100" height="45" fill="none" stroke="#A56F4A" stroke-width="1" />
+<text x="280" y="245" font-size="11" fill="#333">P2</text>
+<text x="280" y="260" font-size="10" fill="#666">msg3,msg6,msg9</text>
+<rect x="500" y="80" width="100" height="50" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="510" y="110" font-size="13" fill="#6B8E23">Consumer0</text>
+<rect x="500" y="160" width="100" height="50" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="510" y="190" font-size="13" fill="#6B8E23">Consumer1</text>
+<rect x="500" y="240" width="100" height="50" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="510" y="270" font-size="13" fill="#6B8E23">Consumer2</text>
+<line x1="180" y1="105" x2="250" y2="105" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="365" y1="137" x2="500" y2="105" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="365" y1="192" x2="500" y2="185" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="365" y1="247" x2="500" y2="265" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<text x="620" y="105" font-size="11" fill="#333">← P0</text>
+<text x="620" y="185" font-size="11" fill="#333">← P1</text>
+<text x="620" y="265" font-size="11" fill="#333">← P2</text>
+<rect x="80" y="310" width="640" height="80" rx="4" fill="none" stroke="#333" stroke-width="1.5" />
+<text x="100" y="335" font-size="12" fill="#333" font-weight="bold">不丢消息三段保证：</text>
+<text x="100" y="355" font-size="11" fill="#333">Producer: acks=all + 重试 | Broker: ISR副本同步 | Consumer: 手动提交offset</text>
+<text x="100" y="375" font-size="11" fill="#6B8E23">顺序保证：同一key→同一Partition→按写入顺序消费</text>
+<text x="80" y="420" font-size="12" fill="#666">百万QPS：批量写入(16KB/批) + 顺序磁盘写 + 零拷贝(sendfile)</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>
