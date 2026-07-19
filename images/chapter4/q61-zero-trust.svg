@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">零信任架构：永不信任，持续验证</text>
+<rect x="80" y="80" width="640" height="100" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="100" y="110" font-size="13" fill="#D88A8A" font-weight="bold">传统架构（城堡模型）：</text>
+<text x="100" y="135" font-size="12" fill="#333">内网 = 可信 → 外网 = 不可信</text>
+<text x="100" y="160" font-size="12" fill="#D88A8A">问题：一旦突破外网防线（钓鱼/VPN漏洞），内网畅通无阻</text>
+<rect x="80" y="210" width="640" height="150" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="100" y="240" font-size="13" fill="#6B8E23" font-weight="bold">零信任架构：</text>
+<text x="100" y="265" font-size="12" fill="#333">1. 身份验证：每个请求都验证身份（不只是首次登录）</text>
+<text x="100" y="290" font-size="12" fill="#333">2. 最小权限：只授予完成任务所需的最小权限</text>
+<text x="100" y="315" font-size="12" fill="#333">3. 设备健康：验证设备是否合规（补丁/加密/安全状态）</text>
+<text x="100" y="340" font-size="12" fill="#333">4. 持续评估：基于上下文（位置/时间/行为）动态调整信任</text>
+<rect x="280" y="200" width="160" height="0" />
+<text x="100" y="385" font-size="12" fill="#333">核心转变：从"在哪里"（内外网）→ "是谁、用什么设备、干什么"</text>
+<text x="100" y="410" font-size="12" fill="#666">Google BeyondCorp 是零信任的标杆实践——员工从任何地点访问任何应用都需要身份+设备验证</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

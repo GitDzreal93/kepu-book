@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">DDoS 分布式拒绝服务攻击</text>
+<rect x="300" y="200" width="150" height="80" rx="4" fill="none" stroke="#D88A8A" stroke-width="2.5" />
+<text x="335" y="230" font-size="14" fill="#D88A8A" font-weight="bold">目标服务器</text>
+<text x="325" y="255" font-size="12" fill="#333">带宽/CPU耗尽</text>
+<text x="320" y="275" font-size="12" fill="#D88A8A">正常用户无法访问</text>
+<rect x="80" y="80" width="80" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="90" y="105" font-size="11" fill="#A56F4A">Bot 1</text>
+<rect x="80" y="140" width="80" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="90" y="165" font-size="11" fill="#A56F4A">Bot 2</text>
+<rect x="80" y="200" width="80" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="90" y="225" font-size="11" fill="#A56F4A">Bot 3</text>
+<rect x="80" y="260" width="80" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="90" y="285" font-size="11" fill="#A56F4A">Bot 4</text>
+<rect x="80" y="320" width="80" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="90" y="345" font-size="11" fill="#A56F4A">Bot N</text>
+<rect x="580" y="80" width="80" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="590" y="105" font-size="11" fill="#A56F4A">Bot 5</text>
+<rect x="580" y="140" width="80" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="590" y="165" font-size="11" fill="#A56F4A">Bot 6</text>
+<rect x="580" y="200" width="80" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="590" y="225" font-size="11" fill="#A56F4A">Bot 7</text>
+<rect x="580" y="260" width="80" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="590" y="285" font-size="11" fill="#A56F4A">Bot 8</text>
+<rect x="580" y="320" width="80" height="40" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="590" y="345" font-size="11" fill="#A56F4A">Bot N</text>
+<line x1="160" y1="100" x2="300" y2="210" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="160" y1="160" x2="300" y2="220" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="160" y1="220" x2="300" y2="230" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="160" y1="280" x2="300" y2="245" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="580" y1="100" x2="450" y2="210" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="580" y1="160" x2="450" y2="220" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="580" y1="220" x2="450" y2="230" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="580" y1="280" x2="450" y2="245" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<text x="80" y="400" font-size="12" fill="#333">Botnet：被感染的设备群 → 同时发海量请求 → 耗尽带宽/连接数/CPU</text>
+<text x="80" y="425" font-size="12" fill="#6B8E23">防御：CDN分散流量 / WAF过滤 / 流量清洗中心 / Anycast路由</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

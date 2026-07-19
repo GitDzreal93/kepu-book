@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">SIM 卡交换攻击</text>
+<rect x="80" y="80" width="120" height="50" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="95" y="110" font-size="13" fill="#333">受害者</text>
+<rect x="280" y="80" width="130" height="50" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="300" y="110" font-size="13" fill="#A56F4A">运营商</text>
+<rect x="280" y="160" width="130" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="300" y="190" font-size="12" fill="#D88A8A">补办SIM卡</text>
+<text x="300" y="205" font-size="11" fill="#333">（伪造身份证）</text>
+<rect x="500" y="160" width="130" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="510" y="190" font-size="12" fill="#D88A8A">旧SIM失效</text>
+<text x="510" y="205" font-size="11" fill="#333">短信到新卡</text>
+<rect x="500" y="240" width="130" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="510" y="270" font-size="12" fill="#D88A8A">接收验证码</text>
+<rect x="280" y="320" width="340" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="300" y="350" font-size="13" fill="#D88A8A" font-weight="bold">重置密码 → 劫持账号 → 转账</text>
+<line x1="200" y1="105" x2="280" y2="105" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<text x="210" y="95" font-size="11" fill="#333">1.信息收集</text>
+<line x1="345" y1="130" x2="345" y2="160" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="410" y1="185" x2="500" y2="185" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="565" y1="210" x2="565" y2="240" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="500" y1="265" x2="450" y2="320" stroke="#D88A8A" stroke-width="1" marker-end="url(#arrow)" />
+<text x="80" y="410" font-size="12" fill="#6B8E23">防御：SMS验证码不作为唯一因子 → 双因素认证(TFA) → 硬件密钥/FIDO</text>
+<text x="80" y="435" font-size="12" fill="#666">SIM Swap的根本问题：手机号被当成了"你是谁"的证明，但手机号是可以被转移的</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

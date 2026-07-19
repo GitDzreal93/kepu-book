@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">SQL 注入原理</text>
+<rect x="80" y="80" width="640" height="70" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="90" y="105" font-size="12" fill="#D88A8A" font-weight="bold">漏洞代码：</text>
+<text x="90" y="130" font-size="12" fill="#333">sql = "SELECT * FROM users WHERE name='" + input + "'"</text>
+<text x="90" y="145" font-size="12" fill="#333">input = "admin' OR '1'='1"</text>
+<rect x="80" y="170" width="640" height="50" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="90" y="195" font-size="12" fill="#A56F4A" font-weight="bold">拼接结果：</text>
+<text x="90" y="215" font-size="12" fill="#333">SELECT * FROM users WHERE name='admin' OR '1'='1'</text>
+<rect x="80" y="240" width="640" height="60" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="90" y="265" font-size="12" fill="#D88A8A" font-weight="bold">'1'='1' 恒为真 → 返回所有用户数据 → 整库泄露</text>
+<text x="90" y="285" font-size="12" fill="#D88A8A">进一步：'; DROP TABLE users; -- → 删表</text>
+<rect x="80" y="320" width="640" height="70" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="90" y="345" font-size="12" fill="#6B8E23" font-weight="bold">正确做法：参数化查询（预编译）</text>
+<text x="90" y="370" font-size="12" fill="#333">sql = "SELECT * FROM users WHERE name=?"</text>
+<text x="90" y="385" font-size="12" fill="#333">input 作为参数传入 → 数据库知道这是值不是SQL语句 → 注入失效</text>
+<text x="80" y="420" font-size="12" fill="#666">本质：永远不要拼接SQL，用参数化查询让数据库区分"代码"和"数据"</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">区块链：去中心化记账</text>
+<rect x="80" y="80" width="180" height="120" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="120" y="110" font-size="13" fill="#4A6FA5" font-weight="bold">Block N-1</text>
+<text x="95" y="135" font-size="11" fill="#333">prev_hash: a3f5...</text>
+<text x="95" y="155" font-size="11" fill="#333">data: tx1,tx2,tx3</text>
+<text x="95" y="175" font-size="11" fill="#333">nonce: 82734</text>
+<text x="95" y="195" font-size="11" fill="#333">hash: 7c9e1...</text>
+<rect x="310" y="80" width="180" height="120" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="350" y="110" font-size="13" fill="#6B8E23" font-weight="bold">Block N</text>
+<text x="325" y="135" font-size="11" fill="#333">prev_hash: 7c9e1...</text>
+<text x="325" y="155" font-size="11" fill="#333">data: tx4,tx5,tx6</text>
+<text x="325" y="175" font-size="11" fill="#333">nonce: 45921</text>
+<text x="325" y="195" font-size="11" fill="#333">hash: 2b8f4...</text>
+<rect x="540" y="80" width="180" height="120" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="580" y="110" font-size="13" fill="#A56F4A" font-weight="bold">Block N+1</text>
+<text x="555" y="135" font-size="11" fill="#333">prev_hash: 2b8f4...</text>
+<text x="555" y="155" font-size="11" fill="#333">data: tx7,tx8,tx9</text>
+<text x="555" y="175" font-size="11" fill="#333">nonce: 19387</text>
+<text x="555" y="195" font-size="11" fill="#333">hash: d5a2c...</text>
+<line x1="260" y1="140" x2="310" y2="140" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)" />
+<line x1="490" y1="140" x2="540" y2="140" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)" />
+<rect x="80" y="240" width="640" height="70" rx="4" fill="none" stroke="#333" stroke-width="1.5" />
+<text x="100" y="265" font-size="12" fill="#333" font-weight="bold">篡改Block N的数据 → hash变化 → Block N+1的prev_hash不匹配 → 链断裂</text>
+<text x="100" y="290" font-size="12" fill="#333">要篡改必须重新计算后续所有块的nonce（工作量证明PoW）→ 需要超过51%算力</text>
+<rect x="80" y="330" width="300" height="50" rx="4" fill="none" stroke="#6B8E23" stroke-width="1.5" />
+<text x="100" y="350" font-size="12" fill="#6B8E23" font-weight="bold">优势</text>
+<text x="100" y="370" font-size="11" fill="#6B8E23">无需中心机构、不可篡改、可追溯</text>
+<rect x="420" y="330" width="300" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="1.5" />
+<text x="440" y="350" font-size="12" fill="#D88A8A" font-weight="bold">代价</text>
+<text x="440" y="370" font-size="11" fill="#D88A8A">性能低(TPS低)、存储冗余、能源消耗</text>
+<text x="80" y="420" font-size="12" fill="#666">区块链不是"更好的数据库"——是用"冗余+共识"换取"去信任"的系统</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

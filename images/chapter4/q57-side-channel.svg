@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">侧信道攻击：从"旁门"泄露密钥</text>
+<rect x="80" y="80" width="150" height="200" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="110" y="110" font-size="13" fill="#4A6FA5" font-weight="bold">加密模块</text>
+<text x="95" y="140" font-size="11" fill="#333">输入：密文</text>
+<text x="95" y="160" font-size="11" fill="#333">输出：明文</text>
+<text x="95" y="200" font-size="11" fill="#D88A8A">侧信道信息：</text>
+<text x="95" y="220" font-size="11" fill="#D88A8A">- 执行时间</text>
+<text x="95" y="240" font-size="11" fill="#D88A8A">- 功耗变化</text>
+<text x="95" y="260" font-size="11" fill="#D88A8A">- 电磁辐射</text>
+<text x="95" y="280" fill="#D88A8A" font-size="11">- 缓存命中率</text>
+<rect x="320" y="80" width="130" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="335" y="110" font-size="12" fill="#D88A8A">时间测量</text>
+<rect x="320" y="150" width="130" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="335" y="180" font-size="12" fill="#D88A8A">功耗分析</text>
+<rect x="320" y="220" width="130" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="335" y="250" font-size="12" fill="#D88A8A">电磁探测</text>
+<rect x="320" y="290" width="130" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="335" y="320" font-size="12" fill="#D88A8A">缓存侧信道</text>
+<line x1="230" y1="100" x2="320" y2="105" stroke="#D88A8A" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)" />
+<line x1="230" y1="175" x2="320" y2="175" stroke="#D88A8A" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)" />
+<line x1="230" y1="245" x2="320" y2="245" stroke="#D88A8A" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)" />
+<line x1="230" y1="280" x2="320" y2="310" stroke="#D88A8A" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)" />
+<rect x="520" y="80" width="180" height="50" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="540" y="110" font-size="12" fill="#A56F4A">推导密钥的某一位</text>
+<rect x="520" y="150" width="180" height="50" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="540" y="180" font-size="12" fill="#A56F4A">逐位恢复完整密钥</text>
+<line x1="450" y1="105" x2="520" y2="105" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="450" y1="175" x2="520" y2="175" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="450" y1="245" x2="520" y2="175" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="450" y1="315" x2="520" y2="175" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<text x="80" y="380" font-size="12" fill="#333">原理：密钥不同 → 不同分支执行 → CPU时间/功耗/缓存行为不同</text>
+<text x="80" y="405" font-size="12" fill="#333">防御：恒定时间算法（所有分支执行相同操作）/ 加入随机延迟 / 屏蔽电磁</text>
+<text x="80" y="430" font-size="12" fill="#6B8E23">著名案例：Meltdown/Spectre —— 利用CPU推测执行的缓存侧信道</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

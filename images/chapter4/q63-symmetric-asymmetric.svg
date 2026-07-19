@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">对称加密 vs 非对称加密 + HTTPS混合加密</text>
+<rect x="80" y="80" width="280" height="160" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="120" y="110" font-size="14" fill="#4A6FA5" font-weight="bold">对称加密</text>
+<text x="100" y="140" font-size="12" fill="#333">同一把密钥加解密</text>
+<text x="100" y="165" font-size="12" fill="#333">AES / ChaCha20</text>
+<text x="100" y="195" font-size="12" fill="#4A6FA5">优点：速度快（GB/s）</text>
+<text x="100" y="220" font-size="12" fill="#4A6FA5">缺点：密钥怎么传？</text>
+<rect x="440" y="80" width="280" height="160" rx="4" fill="none" stroke="#6B8E23" stroke-width="2" />
+<text x="480" y="110" font-size="14" fill="#6B8E23" font-weight="bold">非对称加密</text>
+<text x="460" y="140" font-size="12" fill="#333">公钥加密，私钥解密</text>
+<text x="460" y="165" font-size="12" fill="#333">RSA / ECC</text>
+<text x="460" y="195" font-size="12" fill="#6B8E23">优点：解决密钥传输</text>
+<text x="460" y="220" font-size="12" fill="#6B8E23">缺点：慢（MB/s）</text>
+<rect x="80" y="280" width="640" height="100" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="100" y="305" font-size="13" fill="#A56F4A" font-weight="bold">HTTPS 混合加密 = 取两者之长</text>
+<text x="100" y="330" font-size="12" fill="#333">1. 非对称加密交换"会话密钥"（慢但只需一次，安全传递）</text>
+<text x="100" y="355" font-size="12" fill="#333">2. 对称加密用"会话密钥"加密后续所有数据（快，大量数据）</text>
+<text x="100" y="375" font-size="12" fill="#333">→ 兼顾安全性和性能</text>
+<text x="80" y="420" font-size="12" fill="#666">本质：非对称解决"信任和密钥协商"，对称解决"高效数据加密"</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

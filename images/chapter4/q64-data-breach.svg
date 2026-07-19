@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">数据泄露：连锁反应</text>
+<rect x="80" y="80" width="120" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="100" y="110" font-size="13" fill="#D88A8A">泄露事件</text>
+<rect x="280" y="80" width="130" height="50" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="300" y="105" font-size="12" fill="#A56F4A">撞库攻击</text>
+<text x="300" y="120" font-size="11" fill="#333">用泄露密码试其他站</text>
+<rect x="280" y="160" width="130" height="50" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="300" y="185" font-size="12" fill="#A56F4A">钓鱼精准化</text>
+<text x="300" y="200" font-size="11" fill="#333">知道真实姓名/手机</text>
+<rect x="280" y="240" width="130" height="50" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="300" y="265" font-size="12" fill="#A56F4A">社工攻击</text>
+<text x="300" y="280" font-size="11" fill="#333">知道安全问题答案</text>
+<rect x="280" y="320" width="130" height="50" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="300" y="345" font-size="12" fill="#A56F4A">身份盗用</text>
+<text x="300" y="360" font-size="11" fill="#333">身份证号被冒用</text>
+<line x1="200" y1="105" x2="280" y2="105" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="200" y1="110" x2="280" y2="185" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="200" y1="115" x2="280" y2="265" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<line x1="200" y1="120" x2="280" y2="345" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<rect x="500" y="80" width="180" height="290" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="520" y="110" font-size="13" fill="#D88A8A" font-weight="bold">持续影响</text>
+<text x="520" y="140" font-size="12" fill="#333">第1年：直接损失</text>
+<text x="520" y="160" font-size="12" fill="#333">第2年：撞库蔓延</text>
+<text x="520" y="180" font-size="12" fill="#333">第3年：社工利用</text>
+<text x="520" y="200" font-size="12" fill="#333">第N年：暗网流通</text>
+<text x="520" y="240" font-size="12" fill="#D88A8A">数据无法"撤回"</text>
+<text x="520" y="260" font-size="12" fill="#D88A8A">一旦泄露=永久泄露</text>
+<text x="520" y="300" font-size="12" fill="#6B8E23">防御：</text>
+<text x="520" y="325" font-size="11" fill="#6B8E23">字段级加密</text>
+<text x="520" y="345" font-size="11" fill="#6B8E23">数据脱敏</text>
+<text x="520" y="365" font-size="11" fill="#6B8E23">最小化采集</text>
+<text x="80" y="420" font-size="12" fill="#666">GDPR规定72小时内上报——因为泄露的"涟漪效应"会随时间扩大而非缩小</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>

