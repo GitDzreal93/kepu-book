@@ -1,7 +1,14 @@
-# CSRF攻击——你登录了网银，点了个萌猫链接钱就没了
+# CSRF跨站请求伪造：攻击原理与Token防御方案
 
-![配图](../../images-new/chapter4/csrf.png)
+![](../../images-new/chapter4/csrf.png)
 
+---
+
+> 📌 **关注「程序员臻叔」，获取更多硬核技术干货**
+
+![](../../images-new/cards/wechat-search-box.jpg)
+
+---
 
 你登录了网银，Cookie还在浏览器里。然后你在一个论坛上看到一个帖子"超可爱的小猫图片"，点开看了看，什么也没发生。
 
@@ -14,9 +21,9 @@
 ## 核心结论
 
 1. **CSRF的本质**：攻击者"借用"你的登录状态（Cookie），让你的浏览器代替你发起非自愿请求
-2. **CSRF不是偷Cookie**——攻击者看不到你的Cookie，但浏览器会自动带上它
-3. **SameSite Cookie是最优雅的防御**——浏览器原生机制，一行配置解决大部分CSRF
-4. **CSRF Token是经典方案**——服务器发随机Token，请求必须带上，攻击者拿不到
+2. **CSRF不是偷Cookie**，攻击者看不到你的Cookie，但浏览器会自动带上它
+3. **SameSite Cookie是最优雅的防御**：浏览器原生机制，一行配置解决大部分CSRF
+4. **CSRF Token是经典方案**：服务器发随机Token，请求必须带上，攻击者拿不到
 5. **CSRF和XSS是互补的威胁**——XSS偷Cookie/Token（能读），CSRF借用Cookie（不用读）
 
 ## 深度拆解
@@ -153,12 +160,20 @@ $.ajaxSetup({
 
 ### 臻叔踩坑笔记
 
-1. **GET请求执行写操作**——`GET /transfer?to=x&amount=100`，一个`<img>`标签就能触发CSRF。写操作必须用POST/PUT/DELETE，GET必须是只读的
+1. **GET请求执行写操作**：`GET /transfer?to=x&amount=100`，一个`<img>`标签就能触发CSRF。写操作必须用POST/PUT/DELETE，GET必须是只读的
 2. **SameSite=None没配Secure**——Chrome要求`SameSite=None`必须配合`Secure`，否则Cookie被拒绝。本地开发HTTP环境下会失效
-3. **CSRF Token放在URL里**——`POST /transfer?csrf_token=xyz`，Token出现在URL里会被Referer泄露、被日志记录。Token应放在请求体或Header中
-4. **只防了表单没防AJAX**——现代SPA大量用fetch/axios发请求，这些请求也需要带CSRF Token。统一在axios拦截器里加
-5. **SSO回调忽略了CSRF**——OAuth回调URL容易被CSRF攻击，攻击者可以把回调URL换成自己的授权码，劫持用户账号。回调必须验证state参数
+3. **CSRF Token放在URL里**：`POST /transfer?csrf_token=xyz`，Token出现在URL里会被Referer泄露、被日志记录。Token应放在请求体或Header中
+4. **只防了表单没防AJAX**。现代SPA大量用fetch/axios发请求，这些请求也需要带CSRF Token。统一在axios拦截器里加
+5. **SSO回调忽略了CSRF**：OAuth回调URL容易被CSRF攻击，攻击者可以把回调URL换成自己的授权码，劫持用户账号。回调必须验证state参数
 
 ### 一句话总结
 
-CSRF的本质是攻击者"借用"你的Cookie让浏览器替你发请求——SameSite Cookie是浏览器层最优雅的防御，CSRF Token是应用层的经典方案，高敏感操作还要加二次验证。
+CSRF的本质是攻击者"借用"你的Cookie让浏览器替你发请求：SameSite Cookie是浏览器层最优雅的防御，CSRF Token是应用层的经典方案，高敏感操作还要加二次验证。
+
+---
+
+### 🎯 觉得有帮助？关注「程序员臻叔」
+
+![](../../images-new/cards/follow-card-combined.png)
+
+---

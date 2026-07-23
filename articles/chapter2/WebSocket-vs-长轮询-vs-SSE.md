@@ -1,6 +1,14 @@
-# WebSocket vs HTTP长轮询 vs SSE——实时消息推送，三个方案分别在什么场景是最优解？
+# 实时推送方案对比：WebSocket、长轮询与SSE的技术选型
 
-![配图](../../images-new/chapter2/realtime-push.png)
+![](../../images-new/chapter2/realtime-push.png)
+
+---
+
+> 📌 **关注「程序员臻叔」，获取更多硬核技术干货**
+
+![](../../images-new/cards/wechat-search-box.jpg)
+
+---
 
 你打开股票App，价格每秒跳动。你刷微信，消息秒达。你看直播，弹幕实时飘过。这些场景都需要"服务器主动推送数据到客户端"——但HTTP协议天生是"请求-响应"模式：客户端不问，服务器不能答。
 
@@ -82,7 +90,7 @@ SSE的局限：
 
 ### WebSocket：真正的全双工通信
 
-WebSocket（2011年标准化为RFC 6455）不是HTTP的扩展，而是一个**独立的协议**——只是它借用HTTP完成初始握手。
+WebSocket（2011年标准化为RFC 6455）是一个**独立的协议**，并非HTTP的扩展。它只是借用HTTP完成初始握手。
 
 **握手过程**：
 
@@ -179,4 +187,13 @@ location /ws {
 
 ### 一句话总结
 
-> 实时推送三方案的本质差异是"通信模型"——长轮询用HTTP模拟双向（最兼容但最低效），SSE用HTTP实现单向推送（最简单），WebSocket用独立协议实现全双工（最强但最复杂）。没有银弹——SSE适合"听"，WebSocket适合"聊"，长轮询是"实在没法了"的兜底。
+> 实时推送三方案的本质差异是"通信模型"：长轮询用HTTP模拟双向（最兼容但最低效），SSE用HTTP实现单向推送（最简单），WebSocket用独立协议实现全双工（最强但最复杂）。没有银弹，SSE适合"听"，WebSocket适合"聊"，长轮询是"实在没法了"的兜底。
+
+
+---
+
+### 🎯 觉得有帮助？关注「程序员臻叔」
+
+![](../../images-new/cards/follow-card-combined.png)
+
+---

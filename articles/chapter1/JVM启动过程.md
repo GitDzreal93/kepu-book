@@ -1,6 +1,14 @@
-# `java HelloWorld`到屏幕打印出来——JVM到底做了什么？
+# JVM启动过程：类加载、字节码验证与解释执行的完整链路
 
-![配图](../../images-new/chapter1/jvm-startup.png)
+![](../../images-new/chapter1/jvm-startup.png)
+
+---
+
+> 📌 **关注「程序员臻叔」，获取更多硬核技术干货**
+
+![](../../images-new/cards/wechat-search-box.jpg)
+
+---
 
 你写了三行Java：
 
@@ -22,12 +30,12 @@ public class HelloWorld {
 
 `java HelloWorld`背后是一条**六步链路**，每一步都在做一件具体的事：
 
-第一步，**操作系统创建进程**——shell调用fork+execve，把JVM启动器加载到内存。
-第二步，**JVM初始化运行时**——解析参数、加载核心库、向OS申请堆内存。
+第一步，**操作系统创建进程**。shell调用fork+execve，把JVM启动器加载到内存。
+第二步，**JVM初始化运行时**：解析参数、加载核心库、向OS申请堆内存。
 第三步，**类加载**——Bootstrap ClassLoader从rt.jar加载核心类，Application ClassLoader加载你的HelloWorld。
-第四步，**字节码验证**——检查格式合法性、跳转目标有效性、操作数栈类型一致性。
-第五步，**执行main()**——先解释执行，热点代码触发JIT编译成本地机器码。
-第六步，**println到屏幕**——经过PrintStream→FileOutputStream→write()系统调用→终端驱动→屏幕渲染。
+第四步，**字节码验证**，检查格式合法性、跳转目标有效性、操作数栈类型一致性。
+第五步，**执行main()**。先解释执行，热点代码触发JIT编译成本地机器码。
+第六步，**println到屏幕**，经过PrintStream→FileOutputStream→write()系统调用→终端驱动→屏幕渲染。
 
 JVM和Go的本质区别在于**抽象层的位置**：Go在编译时就把所有跨平台差异处理完了，运行时是纯粹的本地机器码；JVM把跨平台差异推迟到运行时，用一层"虚拟机"在操作系统和你的代码之间做翻译。
 
@@ -45,11 +53,11 @@ JVM和Go的本质区别在于**抽象层的位置**：Go在编译时就把所有
 
 java启动器做三件事：
 
-**解析命令行参数**——`-classpath`告诉JVM去哪里找你的类文件，`-Xmx512m`设置最大堆内存，`-Xms256m`设置初始堆内存，最后的`HelloWorld`是要执行的主类名。
+**解析命令行参数**：`-classpath`告诉JVM去哪里找你的类文件，`-Xmx512m`设置最大堆内存，`-Xms256m`设置初始堆内存，最后的`HelloWorld`是要执行的主类名。
 
 **定位并加载JVM核心库**——在`JAVA_HOME/lib`目录下找到`libjvm.so`（HotSpot JVM的核心），通过`dlopen()`加载到进程地址空间。
 
-**向操作系统申请堆内存**——根据`-Xms`参数，调用`mmap()`或`malloc()`向OS申请一大块内存作为Java堆。这块内存的回收由JVM的GC管理，不由OS管理。
+**向操作系统申请堆内存**。根据`-Xms`参数，调用`mmap()`或`malloc()`向OS申请一大块内存作为Java堆。这块内存的回收由JVM的GC管理，不由OS管理。
 
 ### 第三步：类加载——不是一次性全加载
 
@@ -146,3 +154,11 @@ Go的静态编译让你启动快、部署简单（一个二进制文件搞定）
 ### 一句话总结
 
 > JVM的存在证明了计算机科学里一条铁律：加一层抽象解决一个问题，但引入一个新问题。字节码让你"一次编译到处运行"，代价是启动慢和预热开销。这层抽象的价值取决于你的场景——没有最好的方案，只有最合适的trade-off。
+
+---
+
+### 🎯 觉得有帮助？关注「程序员臻叔」
+
+![](../../images-new/cards/follow-card-combined.png)
+
+---

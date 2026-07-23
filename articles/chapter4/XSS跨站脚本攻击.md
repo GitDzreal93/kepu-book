@@ -1,7 +1,14 @@
-# XSS攻击——评论区里的一行代码，偷走了所有人的Cookie
+# XSS跨站脚本攻击：存储型、反射型与DOM型防御策略
 
-![配图](../../images-new/chapter4/xss.png)
+![](../../images-new/chapter4/xss.png)
 
+---
+
+> 📌 **关注「程序员臻叔」，获取更多硬核技术干货**
+
+![](../../images-new/cards/wechat-search-box.jpg)
+
+---
 
 2005年，MySpace还是全球最大的社交网站。一个叫Samy Kamkar的19岁年轻人写了一段JavaScript代码，放在自己的MySpace个人主页里。代码的逻辑很简单：访问这个页面的人，会自动把Samy加为好友，然后这段代码会复制到访问者的主页里。
 
@@ -13,9 +20,9 @@
 
 1. **XSS的本质**：攻击者把恶意脚本注入到正常页面中，在其他用户的浏览器里执行
 2. **三种类型**：存储型（最危险，持久化）、反射型（需诱导点击）、DOM型（纯前端，不经过服务器）
-3. **核心防御是输出编码**——把`<script>`变成`&lt;script&gt;`，浏览器当文本显示不当代码执行
+3. **核心防御是输出编码**：把`<script>`变成`&lt;script&gt;`，浏览器当文本显示不当代码执行
 4. **CSP是深度防御**——即使编码漏了，CSP也能阻止未授权脚本执行
-5. **HttpOnly Cookie是最后的保险**——即使XSS执行了，JavaScript也读不到Cookie
+5. **HttpOnly Cookie是最后的保险**：即使XSS执行了，JavaScript也读不到Cookie
 
 ## 深度拆解
 
@@ -174,11 +181,19 @@ const clean = DOMPurify.sanitize(dirtyHtml, {
 ### 臻叔踩坑笔记
 
 1. **只防了HTML上下文忘防JS上下文**——`var name = '${userInput}'`，用户输入`'; alert(1); //`，单引号没转义，照样注入。每个上下文都要对应编码
-2. **富文本编辑器直接存HTML**——用户可以粘贴`<script>`标签。必须用白名单过滤（DOMPurify），不能用黑名单（你永远列不全危险标签）
-3. **JSON API返回用户数据没编码**——前端拿到后直接innerHTML渲染，等于后端没防+前端没防。API返回JSON是正常的，前端渲染时必须用安全方式
-4. **CSP太宽松**——`script-src 'unsafe-inline'`等于没有CSP，内联脚本照样执行。生产环境应该用nonce或hash，不用unsafe-inline
-5. **以为React/Vue就安全**——`dangerouslySetInnerHTML`和`v-html`绕过框架防护。全局搜索这些API，每个使用点都要审计
+2. **富文本编辑器直接存HTML**：用户可以粘贴`<script>`标签。必须用白名单过滤（DOMPurify），不能用黑名单（你永远列不全危险标签）
+3. **JSON API返回用户数据没编码**：前端拿到后直接innerHTML渲染，等于后端没防+前端没防。API返回JSON是正常的，前端渲染时必须用安全方式
+4. **CSP太宽松**。`script-src 'unsafe-inline'`等于没有CSP，内联脚本照样执行。生产环境应该用nonce或hash，不用unsafe-inline
+5. **以为React/Vue就安全**：`dangerouslySetInnerHTML`和`v-html`绕过框架防护。全局搜索这些API，每个使用点都要审计
 
 ### 一句话总结
 
-XSS的本质是用户输入被当作HTML/JS执行——输出编码是核心防御（每个上下文选对编码方式），CSP和HttpOnly是深度防御，现代框架自动转义但不能依赖框架兜底。
+XSS的本质是用户输入被当作HTML/JS执行：输出编码是核心防御（每个上下文选对编码方式），CSP和HttpOnly是深度防御，现代框架自动转义但不能依赖框架兜底。
+
+---
+
+### 🎯 觉得有帮助？关注「程序员臻叔」
+
+![](../../images-new/cards/follow-card-combined.png)
+
+---

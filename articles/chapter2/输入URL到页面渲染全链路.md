@@ -1,6 +1,14 @@
-# 你在浏览器输入baidu.com然后回车——从敲下回车到页面渲染，网络上到底发生了什么？
+# URL到页面渲染全链路：DNS解析到DOM渲染的完整流程
 
-![配图](../../images-new/chapter2/enter-url-to-render.png)
+![](../../images-new/chapter2/enter-url-to-render.png)
+
+---
+
+> 📌 **关注「程序员臻叔」，获取更多硬核技术干货**
+
+![](../../images-new/cards/wechat-search-box.jpg)
+
+---
 
 这是前端面试、后端面试、运维面试——几乎所有技术岗都爱问的经典问题。它之所以经典，是因为这一个动作串联了计算机网络的全链路：DNS解析、TCP握手、TLS协商、HTTP请求、CDN调度、服务端处理、响应传输、浏览器渲染。每一步都有延迟，每一步都可能出问题。
 
@@ -173,3 +181,12 @@ https://www.baidu.com
 ### 一句话总结
 
 > 从输入URL到看到页面是一个七棒接力赛：DNS找路、TCP建桥、TLS加密、HTTP传话、服务器干活、网络回传、浏览器画图。任何一棒慢了，用户就感觉"卡"。性能优化的第一步永远是测量——先用工具拆解延迟分布，再决定优化哪一环。
+
+
+---
+
+### 🎯 觉得有帮助？关注「程序员臻叔」
+
+![](../../images-new/cards/follow-card-combined.png)
+
+---

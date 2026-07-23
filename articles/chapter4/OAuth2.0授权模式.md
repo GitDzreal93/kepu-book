@@ -1,7 +1,14 @@
-# OAuth2.0的四种授权模式——为什么"用微信登录"是安全的
+# OAuth 2.0授权机制：四种授权流程与扫码登录实现
 
-![配图](../../images-new/chapter4/oauth2.png)
+![](../../images-new/chapter4/oauth2.png)
 
+---
+
+> 📌 **关注「程序员臻叔」，获取更多硬核技术干货**
+
+![](../../images-new/cards/wechat-search-box.jpg)
+
+---
 
 你打开一个新App，选择"用微信登录"。微信弹出授权页："XX应用想获取你的头像和昵称"。你点"同意"，App就登录成功了。
 
@@ -13,9 +20,9 @@
 
 1. **OAuth2.0解决的核心问题**：不共享密码，安全委托权限
 2. **四种授权模式**：授权码（最安全）、隐式（已淘汰）、密码（信任度极高才用）、客户端凭证（机器对机器）
-3. **授权码模式是事实标准**——其他三种要么被淘汰要么场景极窄
-4. **PKCE是移动端/SPA的必备扩展**——防止授权码被截获
-5. **OAuth2.0是授权不是认证**——要确认身份需要叠加OIDC
+3. **授权码模式是事实标准**：其他三种要么被淘汰要么场景极窄
+4. **PKCE是移动端/SPA的必备扩展**：防止授权码被截获
+5. **OAuth2.0是授权不是认证**，要确认身份需要叠加OIDC
 
 ## 深度拆解
 
@@ -182,11 +189,19 @@ if request.args.get('state') != session['oauth_state']:
 ### 臻叔踩坑笔记
 
 1. **redirect_uri没做精确匹配**——`redirect_uri=https://app.com/callback`可以被匹配成`https://app.com/callback/../../attacker`。必须精确匹配预注册的URI，不允许通配符
-2. **state参数没验证**——不验证state导致CSRF，攻击者可以把自己的授权码绑到受害者账号上。state是必须的，不是可选的
-3. **access_token存在localStorage**——XSS可以直接读取localStorage窃取token。应该存在httpOnly Cookie中，或者用BFF（Backend For Frontend）模式
-4. **用了隐式模式没升级**——隐式模式已淘汰，SPA应该迁移到授权码+PKCE。不升级会有安全风险，且新浏览器策略可能不支持
-5. **把OAuth2.0当认证用**——OAuth2.0是授权不是认证，只给access_token不证明用户身份。需要认证就叠加OIDC拿id_token
+2. **state参数没验证**：不验证state导致CSRF，攻击者可以把自己的授权码绑到受害者账号上。state是必须的，不是可选的
+3. **access_token存在localStorage**：XSS可以直接读取localStorage窃取token。应该存在httpOnly Cookie中，或者用BFF（Backend For Frontend）模式
+4. **用了隐式模式没升级**。隐式模式已淘汰，SPA应该迁移到授权码+PKCE。不升级会有安全风险，且新浏览器策略可能不支持
+5. **把OAuth2.0当认证用**：OAuth2.0是授权不是认证，只给access_token不证明用户身份。需要认证就叠加OIDC拿id_token
 
 ### 一句话总结
 
-OAuth2.0的核心是"不共享密码、安全委托权限"——授权码模式是事实标准，PKCE是移动端必选扩展，四种模式中隐式和密码已被淘汰，需要身份认证就叠加OIDC。
+OAuth2.0的核心是"不共享密码、安全委托权限"：授权码模式是事实标准，PKCE是移动端必选扩展，四种模式中隐式和密码已被淘汰，需要身份认证就叠加OIDC。
+
+---
+
+### 🎯 觉得有帮助？关注「程序员臻叔」
+
+![](../../images-new/cards/follow-card-combined.png)
+
+---
